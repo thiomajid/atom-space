@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props {
+  to: string;
+  label: string;
+  target?: HTMLAttributes<"a">["target"];
+}
+
+const { to, label, target = "_blank" } = Astro.props;
+---
+
+<a
+  href={to}
+  target={target}
+  class:list={["inline-flex items-center underline text-black "]}
+>
+  <span>{label}</span>
+  <Icon name="radix-icons:external-link" />
+</a>

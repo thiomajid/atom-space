@@ -1,0 +1,26 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props {
+  text: string;
+  href: string;
+  icon?: string;
+  class?: string;
+  target?: HTMLAttributes<"a">["target"];
+}
+
+const props = Astro.props;
+---
+
+<a
+  href={props.href}
+  target={props.target || "_blank"}
+  class:list={[
+    "inline-flex items-center  px-4 py-2 rounded-md transition-all duration-300",
+    props.class,
+  ]}
+>
+  <span class="mr-2">{props.text}</span>
+  {props.icon && <Icon name={props.icon} class="inline" />}
+</a>

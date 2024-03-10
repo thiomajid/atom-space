@@ -1,0 +1,17 @@
+---
+interface Props {
+  src: string;
+  caption: string;
+  alt?: string;
+  className?: string;
+}
+
+const props = Astro.props;
+---
+
+<figure class:list={["p-4 text-center mx-auto flex flex-col", props.className]}>
+  <img src={props.src} alt={props.alt} class="rounded-md mb-4" />
+  <figcaption class="text-gray-700 italic text-sm">
+    {props.caption}
+  </figcaption>
+</figure>

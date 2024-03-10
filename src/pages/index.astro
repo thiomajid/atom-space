@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Link from "../components/Link.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      .hero-image {
+        width: 100%;
+      }
+      .hero-image .img {
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+        box-shadow: var(--box-shadow);
+      }
+    </style>
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+
+    <main class="grid grid-cols-1 gap-8 lg:grid-cols-2 mt-10">
+      <div>
+        <h3>👋 Hi There!</h3>
+        <p>
+          Welcome to {SITE_TITLE} . This is a place where I write about things I'm
+          interested in, but also share some of my projects and ideas.
+        </p>
+
+        <p>
+          Right now, I'm uncovering the beauty of <Link
+            to="https://en.wikipedia.org/wiki/Natural_language_processing"
+            label="NLP"
+          /> and its application through our daily lives. In my spare time, I also
+          work on
+          <span class="font-bold">OSS</span> projects like <Link
+            label="EfLight"
+            to="https://eflight.netlify.app/"
+          />.
+        </p>
+
+        <p>
+          Non-technical? I'm also a
+          <span class="border-b border-dashed border-gray-500">musician</span>
+          mainly playing
+          <span class="border-b border-dashed border-gray-500">piano</span>.
+        </p>
+      </div>
+
+      <div>
+        <Image
+          class="img"
+          width={1200}
+          height={780}
+          src="/me.jpg"
+          alt="Abdoul Majid O. Thiombiabno"
+        />
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
