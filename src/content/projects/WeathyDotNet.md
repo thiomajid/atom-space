@@ -5,6 +5,7 @@ pubDate: "Feb 06 2023"
 repository: "https://github.com/thiomajid/WeathyDotNet"
 heroImage: "https://www.notion.so/images/page-cover/met_fitz_henry_lane.jpg"
 tags: [".NET", "Experiment"]
+state: "Complete"
 ---
 
 WeathyDotNet is a CLI tool built with **C#** that provides a given location's weather using _OpenWeather_'s API.

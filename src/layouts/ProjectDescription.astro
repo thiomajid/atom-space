@@ -1,6 +1,8 @@
 ---
+import Badge from "@/components/Badge.astro";
 import ButtonLink from "@/components/ButtonLink.astro";
 import ContentTags from "@/components/ContentTags.astro";
+import { getProjectBadgeStyle } from "@/utils/content";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
@@ -17,7 +19,10 @@ const {
   liveLink,
   repository,
   liveLinkText,
+  state,
 } = Astro.props;
+
+const badgeStyle = getProjectBadgeStyle(state);
 ---
 
 <html lang="en">
@@ -87,6 +92,10 @@ const {
               <ContentTags tags={tags} />
             </div>
             <h1>{title}</h1>
+            <div class="flex gap-2">
+              <div>State:</div>
+              <div><Badge text={state} colorClass={badgeStyle} /></div>
+            </div>
             <hr />
           </div>
 

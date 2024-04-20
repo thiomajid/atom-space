@@ -1,9 +1,10 @@
 ---
 interface Props {
   text: string;
+  colorClass?: string;
 }
 
-const { text } = Astro.props;
+const { text, colorClass } = Astro.props;
 ---
 
-<p class="bg-gray-900 text-white text-sm w-fit rounded px-2">#{text}</p>
+<p class:list={["text-sm w-fit rounded px-2", colorClass]}>{text}</p>

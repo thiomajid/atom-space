@@ -1,5 +1,7 @@
 ---
+import Badge from "@/components/Badge.astro";
 import ContentTags from "@/components/ContentTags.astro";
+import { updateProjectWithBadgeStyle } from "@/utils/content";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
@@ -9,7 +11,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 
 const posts = (await getCollection("projects"))
   .filter((x) => x.data.isPublic)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .map(updateProjectWithBadgeStyle);
 ---
 
 <!doctype html>
@@ -107,6 +110,15 @@ const posts = (await getCollection("projects"))
                   <p class="date">
                     <ContentTags tags={post.data.tags} />
                   </p>
+                  <div class="flex gap-2">
+                    <div class="text-gray-800">State:</div>
+                    <div class="pt-1.5">
+                      <Badge
+                        text={post.data.state}
+                        colorClass={post.badgeColor}
+                      />
+                    </div>
+                  </div>
                 </a>
               </li>
             ))

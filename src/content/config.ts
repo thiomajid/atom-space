@@ -21,6 +21,7 @@ const projects = defineCollection({
     pubDate: z.coerce.date(),
     heroImage: z.string(),
     isPublic: z.boolean().default(true),
+    state: z.enum(["Complete", "Paused", "In Progress"]).default("Paused"),
     repository: z.string().optional(),
     liveLink: z.string().optional(),
     liveLinkText: z.string().optional(),

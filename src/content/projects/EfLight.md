@@ -6,6 +6,7 @@ liveLink: "https://eflight.netlify.app/"
 repository: "https://github.com/thiomajid/EfLight"
 heroImage: "https://www.notion.so/images/page-cover/woodcuts_4.jpg"
 tags: [".NET", "Entity Framework Core"]
+state: "Paused"
 ---
 
 Started as an internal tool while working on [Genesis](/projects/genesis) to abstract away the complexity of Entity Framework Core, EfLight is a NuGet package that provides a set of extension methods and abstractions built on top of _Entity Framework Core_ to reduce the boilerplate code needed to interact with a relational database.
