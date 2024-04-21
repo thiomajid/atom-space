@@ -30,14 +30,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Geist Mono";
-  src: url("/fonts/geistmono-regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 body {
   font-family: "Atkinson", sans-serif;
   margin: 0;
