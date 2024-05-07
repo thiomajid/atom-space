@@ -3,7 +3,7 @@ title: "Nota"
 description: "Automated data annotation"
 pubDate: "Apr 20 2024"
 heroImage: "/projects/nota.jpg"
-repository: "https://github.com/thiomajid/nota"
+# repository: "https://github.com/thiomajid/nota"
 isPublic: true
 state: "In Progress"
 tags: ["NLP", "DataAnnotation", "AI"]
