@@ -7,4 +7,117 @@ tags: ["RL", "Agent", "MDP"]
 isReady: true
 ---
 
-WIP - Stay tuned
+import CaptionedImage from "@/components/CaptionedImage.astro";
+import Link from "@/components/Link.astro";
+
+## Introduction
+
+> Reinforcement learning is a **framework for learning** how to interact with the
+> environment **from experience.**
+
+\- Steve Brunton, University of Washington
+
+Reinforcement learning (a.k.a RL) is a machine learning paradigm where an agent (AI)
+learns to interact with an environment to achieve a goal. The agent learns through
+trial and error. It receives **feedback** in the form of **rewards or penalties** for its
+actions. Hence, the agent's goal is to maximize the total reward it receives over time.
+
+Different from supervised or unsuperivsed learning, our agent receives as input the current
+**state** of the environment and outputs an **action** to take.
+
+## RL terminology
+
+<CaptionedImage
+  src="/blog/rl-101/rl-framework.png"
+  caption="The reinforcement learning framework"
+/>
+
+A RL process is often referred to as a **Markov Decision Process (MDP)**. If you are
+familiar with MDPs or Markov chains, you'd have guessed that the transition from one state
+to another is **memoryless**. That is, the next state depends only on the current state.
+
+As a matter of fact, a state $s$ in RL is a **representation of the environment** at a given
+time. The agent uses this representation to decide which action to take next and the term
+**action space** refers to the set of all possible actions the agent can take. For instance,
+if you are training an agent to play a game like pacman, the action space would be:
+$\mathcal{A} = \{ \text{up}, \text{down}, \text{left}, \text{right} \}$.
+
+Given that after each taken action the agent receives a reward and it aims to maximize the
+cumulative reward, this cumulative reward called **return** can be expressed as:
+
+$$
+\begin{align}
+R(\tau) &= r_{t+1} + r_{t+2} + \ldots + r_T \\
+&= \sum_{t=0}^T r_{t+1}
+\end{align}
+$$
+
+$\tau$ is a **trajectory** and is represents a sequence of states, actions and rewards:
+$\tau = (s_0, a_0, r_1, s_1, a_1, r_2, s_2, \ldots, s_T)$.
+We can add a new term to the return called **discount rate** $\gamma \in [0, 1]$.
+The discount rate tells us how much we value future rewards compared to immediate ones.
+A high discount rate means we value future rewards more than immediate ones. Taking $\gamma$
+into account we can rewrite the return as:
+
+$$
+R(\tau) = \sum_{t=0}^T \gamma^t r_{t+1}
+$$
+
+### Tasks in reinforcement learning
+
+An instance of a reinforcement learning problem is called a **task**. A task can be
+**episodic** or **continuing**. In episodic tasks, there is a **starting state and a terminal
+states**. Thus, there's a trajectory $\tau = (s_0, a_0, r_1, \ldots, s_T)$
+where $s_T$ is a terminal state. Think of a level in Super Mario Bros for instance, the level
+starts when Mario is at the beginning of the level and ends when he reaches the flag.
+In continuing tasks, there are no terminal states. The agent keeps interacting with the
+environment indefinitely (automated stock trading).
+
+## Decision making with a policy
+
+A policy $\pi$ is a function that maps states to actions. It tells the agent what action to
+take in a given state. You can think of it as a _heuristic_ or a _strategy_. It's a learnable function and the goal of is to find the optimal policy
+$\pi^*$ that maximizes the expected return. Policy based methods define a function that can be learned directly. There are
+two types of policy based methods:
+
+- **Deterministic policy**: $\pi(s) = a$. This policy will always output the
+  same action for a given state.
+- **Stochastic policy**: $\pi(a|s) = P(\mathcal{A}|s)$. This policy outputs a
+  probability distribution over the action space for a given state.
+
+<br />
+
+When training an agent, we often use a **value function** to evaluate how good a
+state or action is. The value function is a function that maps a state to the
+expected value of being at that state. A state $s$ value is the **expected
+discounted return** starting from state $s$ and following policy $\pi$.
+
+$$
+\begin{align}
+V^{\pi}(s) &= \mathbb{E}_{\pi} \left[ R(\tau) | s_0 = s \right] \\
+&= \mathbb{E}_{\pi} \left[ \sum_{t=0}^T \gamma^t r_{t+1} | s_0 = s \right]
+\end{align}
+$$
+
+## RL use cases
+
+Most of the time, reinforcement learning is presented in the context of games. However, it
+has a wide range of applications. Here are a few examples:
+
+- **Game playing**: <Link to="https://arxiv.org/abs/1712.01815" label="AlphaGo"/>
+- **Robotics**: training robots to perform tasks in the real world. You can have a look at
+  <Link to="https://huggingface.co/lerobot" label="LeRobot" /> by 🤗Hugging Face
+  for instance.
+- **Finance**: it can be used for optimization problems in finance
+- **NLP**: modern large language models like <Link to="https://arxiv.org/abs/2312.11805" label="Gemini" />
+  or <Link to="https://arxiv.org/abs/2302.13971" label="LLaMA"/> are trained using
+  <Link to="https://arxiv.org/abs/2305.18438" label="RLHF" />
+
+<br />
+
+## Conclusion
+
+Reinforcement learning is a powerful framework for learning how to interact with the
+environment. It's a trial and error process where the agent learns from its mistakes.
+This post covered the basics of RL but we can do better with **deep reinforcement learning** which
+combines deep learning and RL. Stay tuned for more posts on this topic!

@@ -1,0 +1,10 @@
+---
+type Props = {
+  x?: string;
+  y?: string;
+};
+
+const { x, y } = Astro.props;
+---
+
+<div class:list={[`my-${y} mx-${x}`]}></div>
