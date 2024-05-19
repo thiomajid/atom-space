@@ -25,12 +25,12 @@ actions. Hence, the agent's goal is to maximize the total reward it receives ove
 Different from supervised or unsuperivsed learning, our agent receives as input the current
 **state** of the environment and outputs an **action** to take.
 
-## RL terminology
-
 <CaptionedImage
   src="/blog/rl-101/rl-framework.png"
   caption="The reinforcement learning framework"
 />
+
+## RL terminology
 
 A RL process is often referred to as a **Markov Decision Process (MDP)**. If you are
 familiar with MDPs or Markov chains, you'd have guessed that the transition from one state
@@ -46,10 +46,10 @@ Given that after each taken action the agent receives a reward and it aims to ma
 cumulative reward, this cumulative reward called **return** can be expressed as:
 
 $$
-\begin{align}
+\begin{align*}
 R(\tau) &= r_{t+1} + r_{t+2} + \ldots + r_T \\
 &= \sum_{t=0}^T r_{t+1}
-\end{align}
+\end{align*}
 $$
 
 $\tau$ is a **trajectory** and is represents a sequence of states, actions and rewards:
@@ -93,10 +93,10 @@ expected value of being at that state. A state $s$ value is the **expected
 discounted return** starting from state $s$ and following policy $\pi$.
 
 $$
-\begin{align}
+\begin{align*}
 V^{\pi}(s) &= \mathbb{E}_{\pi} \left[ R(\tau) | s_0 = s \right] \\
 &= \mathbb{E}_{\pi} \left[ \sum_{t=0}^T \gamma^t r_{t+1} | s_0 = s \right]
-\end{align}
+\end{align*}
 $$
 
 ## RL use cases
