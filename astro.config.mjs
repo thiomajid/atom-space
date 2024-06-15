@@ -6,7 +6,7 @@ import { withIcons, withMdx, withSitemap } from "./src/utils/integrations";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://thiomajid.vercel.app",
+  site: "https://thiomajid.github.io",
   integrations: [withMdx(), withSitemap(), withIcons(), tailwind()],
   markdown: {
     remarkPlugins: [remarkMath],
