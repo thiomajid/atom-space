@@ -12,7 +12,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/logo.jpg" } = Astro.props;
+const { title, description, image = "/me-tanger.jpg" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -65,5 +65,6 @@ const { title, description, image = "/logo.jpg" } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:creator" content="@thiomajid" />
 
 <ViewTransitions />
