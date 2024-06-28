@@ -1,21 +1,23 @@
 ---
-import { Icon } from "astro-icon/components";
-import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils";
 
-interface Props {
-  to: string;
-  label: string;
-  target?: HTMLAttributes<"a">["target"];
-}
+type Props = {
+  href: string;
+  external?: boolean;
+  underline?: boolean;
+};
 
-const { to, label, target = "_blank" } = Astro.props;
+const { href, external, underline = true, ...rest } = Astro.props;
 ---
 
 <a
-  href={to}
-  target={target}
-  class:list={["inline-flex items-center underline text-black "]}
+  href={href}
+  target={external ? "_blank" : "_self"}
+  class={cn(
+    "inline-block decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 text-current hover:text-black hover:dark:text-white transition-colors duration-300 ease-in-out",
+    underline && "underline underline-offset-2"
+  )}
+  {...rest}
 >
-  <span>{label}</span>
-  {target === "_blank" && <Icon name="radix-icons:external-link" />}
+  <slot />
 </a>

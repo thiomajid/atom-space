@@ -1,13 +1,15 @@
 ---
 title: "Nota"
-description: "Automated data annotation"
-pubDate: "Apr 20 2024"
+description: "AI-based realtime data annotation"
+date: "Apr 20 2024"
 heroImage: "/projects/nota.jpg"
 # repository: "https://github.com/thiomajid/nota"
-isPublic: true
+draft: false
 state: "In Progress"
 tags: ["NLP", "DataAnnotation", "AI"]
 ---
+
+![Nota](/projects/nota.jpg)
 
 From the Latin word _Nota_ which means "Label", this project aims to provide an open-source solution that will allow data annotation in a collaborative manner but also automate the process leveraging **AI models**.
 

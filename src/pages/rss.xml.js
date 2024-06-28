@@ -16,7 +16,7 @@ export async function GET(context) {
     }));
 
   const projectItems = projects
-    .filter((x) => x.data.isPublic)
+    .filter((x) => !x.data.draft)
     .map((project) => ({
       ...project.data,
       link: `/projects/${project.slug}/`,

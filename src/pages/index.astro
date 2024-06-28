@@ -1,70 +1,154 @@
 ---
-import { Image } from "astro:assets";
-import BaseHead from "../components/BaseHead.astro";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import Link from "../components/Link.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import ArrowCard from "@/components/ArrowCard.astro";
+import Container from "@/components/Container.astro";
+import Link from "@/components/Link.astro";
+import { HOME, SITE, SITE_TITLE, SOCIALS } from "@/consts";
+import PageLayout from "@/layouts/PageLayout.astro";
+import { getCollection } from "astro:content";
+
+const blog = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+// const allwork = (await getCollection("work"))
+//   .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
+//   .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
+
+// const work = await Promise.all(
+//   allwork.map(async (item) => {
+//     const { Content } = await item.render();
+//     return { ...item, Content };
+//   })
+// );
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      .hero-image {
-        width: 100%;
-      }
-      .hero-image .img {
-        display: block;
-        margin: 0 auto;
-        border-radius: 12px;
-        box-shadow: var(--box-shadow);
-      }
-    </style>
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <h4 class="animate font-semibold text-black dark:text-white">
+      Hi There <span class="text-xl">👋</span>
+    </h4>
+    <div class="space-y-16">
+      <section>
+        <article class="space-y-4">
+          <p class="animate">
+            Welcome to {SITE_TITLE} . This is a place where I write about things
+            I'm interested in, but also share some of my projects and ideas.
+          </p>
+          <p class="animate">
+            I focus my research on the intersection of
+            <Link
+              href="https://en.wikipedia.org/wiki/Natural_language_processing"
+              external
+            >
+              Natural Language Processing</Link
+            >
+            and <Link
+              href="https://en.wikipedia.org/wiki/Reinforcement_learning"
+              external>Reinforcement Learning</Link
+            >
+            to ensure better decision making in AI systems. In my spare time, I also
+            work on
+            <span class="font-bold">OSS</span> projects like <Link
+              href="/projects/eflight">EfLight</Link
+            > or <Link href="/projects/nota">Nota</Link>.
+          </p>
+        </article>
+      </section>
 
-    <main class="grid grid-cols-1 gap-8 lg:grid-cols-2 mt-10">
-      <div>
-        <h3>👋 Hi There!</h3>
-        <p>
-          Welcome to {SITE_TITLE} . This is a place where I write about things I'm
-          interested in, but also share some of my projects and ideas.
-        </p>
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">Latest posts</h5>
+          <Link href="/blog"> See all posts </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {
+            blog.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+      <!-- 
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Work Experience
+          </h5>
+          <Link href="/work">
+            See all work
+          </Link>
+        </div>
+        <ul class="flex flex-col space-y-4">
+          {work.map(entry => (
+            <li>
+              <div class="text-sm opacity-75">
+                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+              </div>
+              <div class="font-semibold text-black dark:text-white">
+                {entry.data.company}
+              </div>
+              <div class="text-sm opacity-75">
+                {entry.data.role}
+              </div>
+              <article>
+                <entry.Content />
+              </article>
+            </li>
+          ))}
+        </ul>
+      </section> -->
 
-        <p>
-          I focus my research on the intersection of
-          <Link
-            to="https://en.wikipedia.org/wiki/Natural_language_processing"
-            label="Natural Language Processing"
-            target="_blank"
-          />
-          and <Link
-            to="https://en.wikipedia.org/wiki/Reinforcement_learning"
-            label="Reinforcement Learning"
-            target={"_blank"}
-          /> to ensure better decision making in AI systems. In my spare time, I
-          also work on
-          <span class="font-bold">OSS</span> projects like <Link
-            label="EfLight"
-            to="/projects/eflight"
-            target="_self"
-          /> or <Link label="Nota 📝" to="/projects/nota" target="_self" />.
-        </p>
-      </div>
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Recent projects
+          </h5>
+          <Link href="/projects"> See all projects </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {
+            projects.map((project) => (
+              <li>
+                <ArrowCard entry={project} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
 
-      <div>
-        <Image
-          class="img"
-          width={1200}
-          height={780}
-          src="/me.jpg"
-          alt="Abdoul Majid O. Thiombiabno"
-        />
-      </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">Let's Connect</h5>
+        <article>
+          <p>
+            If you want to get in touch with me about something or just to say
+            hi, reach out on social media or send me an email.
+          </p>
+        </article>
+        <ul class="flex flex-wrap gap-2">
+          {
+            SOCIALS.map((SOCIAL, idx) => (
+              <li class="flex gap-x-2 text-nowrap">
+                <Link
+                  href={SOCIAL.HREF}
+                  external
+                  aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
+                >
+                  {SOCIAL.NAME}
+                </Link>
+                {idx + 1 != SOCIALS.length && "/"}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </Container>
+</PageLayout>

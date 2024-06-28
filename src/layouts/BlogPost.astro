@@ -1,15 +1,18 @@
 ---
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
-import Footer from "../components/Footer.astro";
-import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage, tags } =
-  Astro.props;
+const {
+  title,
+  description,
+  date: date,
+  updatedDate,
+  heroImage,
+  tags,
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -32,7 +35,6 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
       .prose {
         width: 720px;
         max-width: calc(100% - 2em);
-        margin: auto;
         padding: 1em;
         color: rgb(var(--gray-dark));
       }
@@ -57,41 +59,10 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
 
   <body>
     <Header />
-    <main>
-      <article>
-        <div class="hero-image flex mx-auto justify-center items-center">
-          {
-            heroImage && (
-              <Image
-                width={500}
-                height={480}
-                src={heroImage}
-                alt={title}
-                transition:name={title}
-                class="ml-8"
-              />
-            )
-          }
-        </div>
-        <div class="prose">
-          <div class="title">
-            <div class="date">
-              <FormattedDate date={pubDate} />
-              {
-                updatedDate && (
-                  <div class="last-updated-on">
-                    Last updated on <FormattedDate date={updatedDate} />
-                  </div>
-                )
-              }
-            </div>
-            <h1 class="text-wrap">{title}</h1>
-            <hr />
-          </div>
-          <slot />
-        </div>
-      </article>
-    </main>
-    <Footer />
+    <article>
+      <div class="animate">
+        <slot />
+      </div>
+    </article>
   </body>
 </html>

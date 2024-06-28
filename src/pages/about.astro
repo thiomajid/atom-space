@@ -1,0 +1,48 @@
+---
+import Container from "@/components/Container.astro";
+import { HOME } from "@/consts";
+import PageLayout from "@/layouts/PageLayout.astro";
+import { Image } from "astro:assets";
+---
+
+<PageLayout title={"About Me"} description={HOME.DESCRIPTION}>
+  <Container>
+    <h4 class="animate font-semibold text-black dark:text-white">
+      Hi There <span class="text-xl">👋</span>
+    </h4>
+    <div class="space-y-16">
+      <section>
+        <article class="space-y-4">
+          <p class="animate">
+            I'm Abdoul Majid, currently pursuing a research Master's degree in
+            Artificial Intelligence.
+          </p>
+          <p class="animate">
+            My main interests are in Natural Language Processing and
+            Reinforcement Learning. I aim to develop AI systems that can make
+            better decisions using agentic approaches.
+          </p>
+          <p class="animate">
+            Besides AI, I enjoy working and experimenting with low-level
+            programming concepts like compilers and databases.
+          </p>
+          <p class="animate">
+            Non technical? No problem, if you are a music fan, I also play
+            piano.
+          </p>
+          <p class="animate">
+            <div class="animate">
+              <Image
+                class="img"
+                width={540}
+                height={360}
+                src="/me.jpg"
+                alt="Abdoul Majid O. Thiombiabno"
+              />
+            </div>
+          </p>
+        </article>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
