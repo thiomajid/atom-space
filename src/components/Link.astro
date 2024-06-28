@@ -17,5 +17,5 @@ const { to, label, target = "_blank" } = Astro.props;
   class:list={["inline-flex items-center underline text-black "]}
 >
   <span>{label}</span>
-  <Icon name="radix-icons:external-link" />
+  {target === "_blank" && <Icon name="radix-icons:external-link" />}
 </a>
