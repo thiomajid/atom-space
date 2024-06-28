@@ -11,7 +11,7 @@ const props = Astro.props;
 
 <figure class:list={["p-4 text-center mx-auto flex flex-col", props.className]}>
   <img src={props.src} alt={props.alt} class="rounded-md mb-4" />
-  <figcaption class="text-gray-700 italic text-sm">
+  <figcaption class="text-gray-700 italic text-sm dark:text-gray-50">
     {props.caption}
   </figcaption>
 </figure>

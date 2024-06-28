@@ -23,10 +23,14 @@ Finetuning a model usually involves updating all the model's weights, which is c
 finetune a model on a particular task but it costed you a lot of time and ressources. Now you'd like to finetune the model on a different task,
 you'd have to repeat the same process with the same cost or even more and unfortunately, not everyone is _GPU rich_.
 
-LoRA stands for "**Low-Rank Adaptation**", it's a reparametrization-based finetuning method proposed by <Link to="https://arxiv.org/abs/2106.09685" label="Hu et al." /> in 2021.
-LoRA proposes an interesting approach to speed up finetuning while preserving the model's performance. The intuition behind LoRA is that the model's weights
-matrix $W_0$ can be represented as the decomposition of a low-rank matrix $W_0 + \Delta W = W_0 + BA$. Nonetheless, it is important to note that $W_0$ is not modified during training,
-only $\Delta W$ values are updated. But before diving into the details, let's have a quick reminder about matrix rank.
+LoRA stands for "**Low-Rank Adaptation**", it's a reparametrization-based finetuning method proposed by <Link href="https://arxiv.org/abs/2106.09685" external>
+Hu et al.</Link> in 2021.
+LoRA proposes an interesting approach to speed up finetuning while
+preserving the model's performance. The intuition behind LoRA is that the model's
+weights matrix $W_0$ can be represented as the decomposition of a low-rank matrix
+$W_0 + \Delta W = W_0 + BA$. Nonetheless, it is important to note that $W_0$ is not
+modified during training, only $\Delta W$ values are updated. But before diving into
+the details, let's have a quick reminder about matrix rank.
 
 ### A quick reminder about matrix rank
 
@@ -66,7 +70,7 @@ So if you'd like to use the model on task on which it has already been finetuned
 
 ## How to use LoRA?
 
-If you are familiar with <Link label="HuggingFace🤗" to="https://huggingface.co/" /> ecosystem then you've probably heard about <Link label="PEFT" to="https://huggingface.co/docs/peft/index" />.
+If you are familiar with <Link href="https://huggingface.co/" external>🤗HuggingFace</Link> ecosystem then you've probably heard about <Link href="https://huggingface.co/docs/peft/index" external>PEFT</Link>.
 PEFT stands for "**Parameter Efficient Fine-Tuning**", it's a library that allows you to finetune your model using LoRA or other adaptation methods. The usage is pretty straightforward.
 To use it you can proceed as follows for example:
 
@@ -88,14 +92,15 @@ config = LoraConfig(
 peft_model = get_peft_model(model, config)
 ```
 
-And that's it, you can now use `peft_model` as you would use `model`. You can train it as you wish, whether it's with `transformers` <Link label="Trainer" to="https://huggingface.co/docs/transformers/v4.36.1/main_classes/trainer" />
+And that's it, you can now use `peft_model` as you would use `model`. You can train it as you wish, whether it's with `transformers` <Link href="https://huggingface.co/docs/transformers/v4.36.1/main_classes/trainer" external>Trainer</Link>
 or your own training loop.
 
-Do note that currently, only `torch.nn.Linear`, `torch.nn.Embedding`, `torch.nn.Conv2d`, `transformers.pytorch_utils.Conv1D` are supported. For a custom module, you can use PyTorch's <Link label="parametrization utilities" to="https://pytorch.org/docs/stable/generated/torch.nn.utils.parametrize.register_parametrization.html#torch.nn.utils.parametrize.register_parametrization" />.
+Do note that currently, only `torch.nn.Linear`, `torch.nn.Embedding`, `torch.nn.Conv2d`, `transformers.pytorch_utils.Conv1D` are supported.
+For a custom module, you can use PyTorch's <Link external href="https://pytorch.org/docs/stable/generated/torch.nn.utils.parametrize.register_parametrization.html#torch.nn.utils.parametrize.register_parametrization">parametrization utilities</Link>.
 
 #### Bonus tip
 
-You may also consider using **quantization** and model compilation with <Link label="torch.compile" to="https://pytorch.org/docs/stable/generated/torch.compile.html"/> to speed up your model.
+You may also consider using **quantization** and model compilation with <Link href="https://pytorch.org/docs/stable/generated/torch.compile.html" external>torch.compile</Link> to speed up your model.
 
 ## Conclusion
 
