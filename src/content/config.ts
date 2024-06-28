@@ -5,7 +5,7 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    date: z.coerce.date(),
+    pubDate: z.coerce.date(),
     heroImage: z.string(),
     draft: z.boolean().default(true),
     updatedDate: z.coerce.date().optional(),
@@ -18,7 +18,7 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    date: z.coerce.date(),
+    pubDate: z.coerce.date(),
     heroImage: z.string(),
     draft: z.boolean().default(true),
     state: z.enum(["Complete", "Paused", "In Progress"]).default("Paused"),

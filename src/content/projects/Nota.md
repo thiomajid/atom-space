@@ -1,7 +1,7 @@
 ---
 title: "Nota"
 description: "AI-based realtime data annotation"
-date: "Apr 20 2024"
+pubDate: "Apr 20 2024"
 heroImage: "/projects/nota.jpg"
 # repository: "https://github.com/thiomajid/nota"
 draft: false

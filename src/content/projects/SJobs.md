@@ -1,7 +1,7 @@
 ---
 title: "SJobs"
 description: "Part-time job search app"
-date: "Dec 01 2022"
+pubDate: "Dec 01 2022"
 repository: "https://github.com/thiomajid/SJobs"
 heroImage: "https://www.notion.so/images/page-cover/rijksmuseum_avercamp_1620.jpg"
 tags: ["Flutter"]

@@ -1,7 +1,7 @@
 ---
 title: "EfLight"
 description: "Reduce the boilerplate code needed to use Entity Framework Core"
-date: "Mar 01 2023"
+pubDate: "Mar 01 2023"
 liveLink: "https://eflight.netlify.app/"
 repository: "https://github.com/thiomajid/EfLight"
 heroImage: "https://www.notion.so/images/page-cover/woodcuts_4.jpg"

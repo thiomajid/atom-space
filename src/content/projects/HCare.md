@@ -1,7 +1,7 @@
 ---
 title: "HCare"
 description: "Hospital management system"
-date: "Jul 01 2021"
+pubDate: "Jul 01 2021"
 repository: "https://github.com/thiomajid/HealthCare"
 heroImage: "https://www.notion.so/images/page-cover/woodcuts_sekka_2.jpg"
 tags: [".NET", "WinForms", "ADO.NET"]

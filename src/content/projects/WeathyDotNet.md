@@ -1,7 +1,7 @@
 ---
 title: "WeathyDotNet"
 description: "A CLI tool that provides a given location’s weather using  OpenWeatherMap API"
-date: "Feb 06 2023"
+pubDate: "Feb 06 2023"
 repository: "https://github.com/thiomajid/WeathyDotNet"
 heroImage: "https://www.notion.so/images/page-cover/met_fitz_henry_lane.jpg"
 tags: [".NET", "Experiment"]

@@ -1,7 +1,7 @@
 ---
 title: "Genesis"
 description: "Healthcare for Niger"
-date: "May 01 2023"
+pubDate: "May 01 2023"
 liveLink: "https://ng-genesis-docs.netlify.app/"
 liveLinkText: "See documentation"
 heroImage: "https://www.notion.so/images/page-cover/webb1.jpg"
